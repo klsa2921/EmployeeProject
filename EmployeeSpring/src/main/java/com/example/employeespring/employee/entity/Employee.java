@@ -24,5 +24,5 @@ public class Employee {
     private String lastName;
     private String department;
     private String gender;
-    private String age;
+    private int age;
 }

@@ -11,6 +11,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@SuppressWarnings("ALL")
+@Deprecated(forRemoval = true)
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -33,15 +35,14 @@ public class SecurityConfig {
                 .requestMatchers("/api/auth/**")
                 .permitAll()
                 .anyRequest()
-                .authenticated();
-        httpSecurity
+                .authenticated()
+                .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        httpSecurity
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class);
 
         return  httpSecurity.build();
     }
-
 }
