@@ -20,12 +20,21 @@ public class EmployeeServiceImpl implements IEmployeeService{
     @Override
     public Employee addEmployee(Map<String,Object> employeeDetails) {
         Employee employee=new Employee();
-        employee.setEmployeeID((Long) employeeDetails.get("employeeId"));
+        employeeDetails.forEach((key,value)-> {
+            System.out.println(key+"-----"+value);
+        });
+        employee.setId((Integer) employeeDetails.get("id"));
+        System.out.println(employee.getId());
+        System.out.println(employeeDetails.get("employeeId")+"---key");
+        employee.setEmployeeID((Integer) employeeDetails.get("employeeId"));
+        System.out.println(employee.getEmployeeID());
         employee.setFirstName((String) employeeDetails.get("firstName"));
         employee.setLastName((String) employeeDetails.get("lastName"));
         employee.setDepartment((String) employeeDetails.get("department"));
         employee.setGender((String) employeeDetails.get("gender"));
         employee.setAge((int) employeeDetails.get("age"));
+        employee.setSalary((Integer) employeeDetails.get("salary") );
+        System.out.println(employee.getEmployeeID()+"---------------------------------------------------------------------------"+employee.getFirstName());
         return employeeRepository.save(employee);
     }
 

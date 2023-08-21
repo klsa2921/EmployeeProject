@@ -1,13 +1,11 @@
 package com.example.employeespring.employee.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 @Data
 @Builder
@@ -18,11 +16,23 @@ import lombok.NoArgsConstructor;
 public class Employee {
     @Id
     @GeneratedValue
-    private Integer id;
-    private long employeeID;
+    private long id;
+    @Column
+    private Integer employeeID;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String firstName;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String lastName;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String department;
+    @Column(nullable = false,length = 150)
+    @Length(min = 4,max = 30)
     private String gender;
+    @Column
     private int age;
+    @Column
+    private long salary;
 }

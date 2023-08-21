@@ -1,31 +1,36 @@
 package com.example.employeespring.employee.controller;
 
 import com.example.employeespring.employee.entity.Employee;
-import com.example.employeespring.employee.repository.EmployeeRepository;
+
 import com.example.employeespring.employee.service.IEmployeeService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/authentication/employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
     private IEmployeeService employeeService;
 
+
     @PostMapping("/addEmployee")
-    public ResponseEntity<String> addEmployee(@RequestBody Map<String,Object> employeeDetails) throws Throwable {
+    public ResponseEntity<Employee> addEmployee(@RequestBody Map<String,Object> employeeDetails) throws Throwable {
+        System.out.println("--------------------------------------------------------------------------------------------------");
+        employeeDetails.forEach((key,value)-> {
+            System.out.println(value);
+        });
         Employee employee=employeeService.addEmployee(employeeDetails);
-        if (employee!=null) return ResponseEntity.ok("Employee added successfully....");
-        else throw new Exception().fillInStackTrace();
+        System.out.println(employee.getEmployeeID()+"----------------------------------------------------"+employee.getFirstName());
+        URI employeeURI=URI.create("/employees/"+ employee.getId());
+        return  ResponseEntity.created(employeeURI).body(employee);
     }
 
     @GetMapping("/getAllEmployee")
