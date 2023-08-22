@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @SuppressWarnings("ALL")
 @Deprecated(forRemoval = true)
@@ -67,9 +67,9 @@ public class SecurityConfig {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.authorizeRequests()
-//                .requestMatchers("/api/auht/register")
-//                .permitAll();
+        http.authorizeRequests()
+                .requestMatchers("/api/auht/**")
+                .permitAll();
         http.exceptionHandling()
                 .authenticationEntryPoint(
                         (request, response, ex) -> {
