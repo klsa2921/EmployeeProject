@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,9 +25,17 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String firstName;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String lastName;
+    @Column(nullable = false,length = 150)
+    @Length(min = 1,max = 150)
     private String email;
+    @Column(nullable = false,length = 150)
+    @Length(min = 8,max = 16)
     private String password;
 
     @Enumerated(EnumType.STRING)

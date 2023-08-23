@@ -4,7 +4,6 @@ import com.example.employeespring.employee.entity.Employee;
 import com.example.employeespring.employee.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -75,5 +74,14 @@ public class EmployeeServiceImpl implements IEmployeeService{
     @Override
     public void deleteEmployeeByEmpId(Integer employeeID) {
         employeeRepository.deleteByEmployeeID(employeeID);
+    }
+
+    @Override
+    public List<Employee> addListOfEmployees(List<Map<String, Object>> employeeList) {
+        List<Employee> employees=new ArrayList<>();
+        employeeList.forEach(map->{
+            employees.add(addEmployee(map));
+        });
+        return employees;
     }
 }

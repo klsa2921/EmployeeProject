@@ -11,4 +11,6 @@ public interface IEmployeeService {
     List<Map<String,Object>> getAllEmployees();
     Employee updateEmployeeByEmpId(Integer employeeID,Map<String,Object> employeeDetails);
     void deleteEmployeeByEmpId(Integer employeeID);
+
+    List<Employee> addListOfEmployees(List<Map<String, Object>> employeeList);
 }

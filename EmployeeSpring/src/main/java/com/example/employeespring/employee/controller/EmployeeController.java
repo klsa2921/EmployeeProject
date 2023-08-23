@@ -19,6 +19,11 @@ public class EmployeeController {
 
     @Autowired
     private IEmployeeService employeeService;
+    @PostMapping("/addListOfEmployees")
+    public ResponseEntity<List<Employee>> addEmployees(@RequestBody List<Map<String,Object>> employeeList){
+       List<Employee>employees= employeeService.addListOfEmployees(employeeList);
+       return ResponseEntity.ok(employees);
+    }
 
 
     @PostMapping("/addEmployee")
@@ -33,7 +38,7 @@ public class EmployeeController {
         return  ResponseEntity.created(employeeURI).body(employee);
     }
 
-    @GetMapping("/getAllEmployee")
+    @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Map<String,Object>>> getAllEmployees(){
         List<Map<String,Object>> employeeDetails= employeeService.getAllEmployees();
         return ResponseEntity.ok(employeeDetails);
