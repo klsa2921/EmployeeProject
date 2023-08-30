@@ -12,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@SuppressWarnings("ALL")
 @Deprecated(forRemoval = true)
 @Configuration
 @EnableWebSecurity
@@ -64,19 +65,43 @@ public class SecurityConfig {
 //
 //        return httpSecurity.build();
 //    }
+//    @Bean
+//    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+//        http.csrf().disable();
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.authorizeRequests()
+//                .requestMatchers("/api/auht/", "/employee")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .authenticationProvider(authenticationProvider)
+//                .addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class)
+//                .exceptionHandling()
+//                .authenticationEntryPoint(
+//                        (request, response, ex) -> {
+//                            response.sendError(
+//                                    HttpServletResponse.SC_UNAUTHORIZED,
+//                                    ex.getMessage()
+//                            );
+//                        }
+//                );
+////        http.addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class);
+//        return http.build();
+//    }
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests()
-                .requestMatchers("/api/auht/", "/employee")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class)
-                .exceptionHandling()
+//        http.authorizeRequests()
+//                .requestMatchers("/api/auht/**", "/employee/**")
+//                .permitAll()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .authenticationProvider(authenticationProvider)
+//                .addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class)
+                http.exceptionHandling()
                 .authenticationEntryPoint(
                         (request, response, ex) -> {
                             response.sendError(
@@ -85,7 +110,6 @@ public class SecurityConfig {
                             );
                         }
                 );
-//        http.addFilterBefore(jwtAuthentication, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

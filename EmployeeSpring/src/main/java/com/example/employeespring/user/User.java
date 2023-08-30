@@ -34,8 +34,7 @@ public class User implements UserDetails {
     @Column(nullable = false,length = 150)
     @Length(min = 1,max = 150)
     private String email;
-    @Column(nullable = false,length = 150)
-    @Length(min = 8,max = 16)
+    @Column(nullable = false,length = 11000)
     private String password;
 
     @Enumerated(EnumType.STRING)
