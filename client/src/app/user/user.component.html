@@ -1,1 +1,17 @@
-<p>user works!</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="card mt-5 bg-info-subtle text-bg-info" style="width: 30%">
+      <div class="card-body">
+        <div class="card-title" style="align-content: center;text-align: center">
+          <div *ngIf="user" style="text-align: left">
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <p><strong>FirstName:</strong>{{user.firstName}}</p>
+            <p><strong>LastName:</strong>{{user.lastName}}</p>
+            <p><strong>Email:</strong>{{user.email}}</p>
+            <p><strong>Role:</strong>{{user.role}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

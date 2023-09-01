@@ -1,25 +1,27 @@
 <div class="container mt-5">
-  <h2 style="text-align: center">Login Page</h2>
-  <div class="card" style="padding:20px;width: 50%">
-    <form #loginForm="ngForm"  (ngSubmit)="login(loginForm)">
-      <div class="form-control mb-2" style="align-content: center">
-        <label for="email">Email:-</label>
-        <input type="text" class="form-control" placeholder="Enter your registered email" id="email" name="email"
-               [(ngModel)]="email"/>
-      </div>
-      <div class="form-control mb-2">
-        <label for="password">Password:-</label>
-        <input type="text" class="form-control" placeholder="Enter your password" id="password" name="password"
-               [(ngModel)]="password"/>
-      </div>
-      <div class="btn-group">
-        <div class="btn-group" style="margin-left: 5px">
-          <button type="submit" class="btn btn-success">Login</button>
+  <div class="row justify-content-center">
+    <h2 style="text-align: center">Login Page</h2>
+    <div class="card" style="padding:20px;width: 50%">
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="form-control mb-2" style="align-content: center">
+          <label for="email">Email:-</label>
+          <input type="text" class="form-control" placeholder="Enter your registered email" id="email" name="email"
+                 [(ngModel)]="email"/>
         </div>
-        <div>
-          <button type="button" class="btn btn-primary" routerLink="/registration">Register</button>
+        <div class="form-control mb-2">
+          <label for="password">Password:-</label>
+          <input type="text" class="form-control" placeholder="Enter your password" id="password" name="password"
+                 [(ngModel)]="password"/>
         </div>
-      </div>
-    </form>
+        <div class="btn-group">
+          <div class="btn-group" style="margin-left: 5px">
+            <button type="submit" class="btn btn-success">Login</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary" routerLink="/registration">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
