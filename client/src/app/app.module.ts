@@ -10,6 +10,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { EmployeeManagementComponent } from './employee-management/employee-management.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {HttpClientModule} from "@angular/common/http";
     UserComponent,
     HeaderComponent,
     EmployeeComponent,
-    RegisterComponent
+    RegisterComponent,
+    EmployeeManagementComponent
   ],
   imports: [
     BrowserModule,
