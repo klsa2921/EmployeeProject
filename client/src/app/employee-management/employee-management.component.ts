@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-management.component.css']
 })
 export class EmployeeManagementComponent {
-
+  salaryRange:number =10000;
 }
